@@ -1,14 +1,32 @@
-// Divide a certain number of teacups into all of its possible sets
-
 import java.util.ArrayList;
 
+/**
+ * Recursively get all combination sums of a number
+ */
 public class Divide {
-    //private ArrayList<ArrayList<Integer>>[][] allCombos;
     private ArrayList<ArrayList<Integer>> combos = new ArrayList<>();
 
-    public Divide(){
+    public Divide(){}
+
+    /**
+     * Get array list of all combinations
+     * @param cupCount sum
+     * @param largestAllowed numbers in the combination cannot exceed
+     * @return list of combinations (which are also lists)
+     */
+    public ArrayList<ArrayList<Integer>> getCombos(int cupCount, int largestAllowed){
+        this.combos = new ArrayList<>();  // reset after every use
+        getCombo(1, largestAllowed, cupCount, new ArrayList<>());
+        return this.combos;
     }
 
+    /**
+     * Recurse through every possible combo
+     * @param currOption integer you add to the combination
+     * @param finalOption largest number you can use
+     * @param goal final sum
+     * @param path holds what numbers we've used so far in the combination
+     */
     private void getCombo(int currOption, int finalOption, int goal, ArrayList<Integer> path){
         if(currOption > finalOption){
             if(goal == 0){
@@ -26,11 +44,4 @@ public class Divide {
         }
         getCombo(currOption + 1, finalOption, goal, path);
     }
-
-    public ArrayList<ArrayList<Integer>> getCombos(int cupCount, int largestAllowed){
-        getCombo(1, largestAllowed, cupCount, new ArrayList<>());
-        return this.combos;
-    }
-
-
 }

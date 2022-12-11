@@ -11,5 +11,12 @@ public class Main {
         for(int i = 1; i <= cupCount; i++){
             table.getSum(i, maxAllowed);
         }
+
+//        DynamicTable table2 = new DynamicTable();
+//        table2.makeTable();
+//
+//        for(int i = 1; i <= cupCount; i++){
+//            table2.getSum(i, maxAllowed);
+//        }
     }
 }
